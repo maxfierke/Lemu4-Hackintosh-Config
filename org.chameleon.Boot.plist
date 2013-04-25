@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DSDT</key>
+	<string>/Extra/DSDT.aml</string>
+	<key>EthernetBuiltIn</key>
+	<string>Yes</string>
+	<key>Graphics Mode</key>
+	<string>1366x768x32</string>
+	<key>GraphicsEnabler</key>
+	<string>No</string>
+	<key>Kernel</key>
+	<string>mach_kernel</string>
+	<key>Kernel Flags</key>
+	<string>npci=0x3000 darkwake=0 PCIRootUID=1</string>
+	<key>Legacy Logo</key>
+	<string>Yes</string>
+	<key>PciRoot</key>
+	<string>1</string>
+	<key>SMBIOS</key>
+	<string>/Extra/smbios.plist</string>
+	<key>Theme</key>
+	<string>LoginToLion</string>
+	<key>Timeout</key>
+	<string>2</string>
+	<key>UseKernelCache</key>
+	<string>Yes</string>
+	<key>GenerateCStates</key>
+	<string>Yes</string>
+	<key>GeneratePStates</key>
+	<string>Yes</string>	
+</dict>
+</plist>
