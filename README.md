@@ -47,5 +47,13 @@ DSDT, SSDT, and boot config needed for running OS X 10.8 on a System76 Lemur Ult
 ###Notes
 - Battery life is about half of what it is on Ubuntu 12.10 (2.25 hours vs. ~4 hours).
 
+#How To Use
+- Install the above kexts. Most are available from MultiBeast. VoodooPS2Controller and VoodooBattery are not included in Multibeast.
+- Copy org.chameleon.Boot.plist to /Extra
+- Compile DSDT.dsl to DSDT.aml with MaciASL or another utility. Save compiled DSDT.aml to /Extra
+- Compile SSDT.dsl to SSDT.aml with MaciASL or another utility. Save compiled SSDT.aml to /Extra
+- Apply Conti's AICPM fix from above.
+- Add MacBookPro9,2 to /System/Library/CoreServices/PlatformSupport.plist, if missing.
+
 ###OBVIOUS DISCLAIMER:
 You do all of this at your own risk. I'm not responsible for any damage, intentional or unintentional, including, but not limited to, data loss, loss of functionality, hardware or software damage, or unfulfilled partners.
