@@ -4,12 +4,16 @@
 <dict>
 	<key>DSDT</key>
 	<string>/Extra/DSDT.aml</string>
+	<key>DropSSDT</key>
+	<string>Yes</string>
+	<key>EnableC2State</key>
+	<string>Yes</string>
+	<key>EnableC3State</key>
+	<string>Yes</string>
 	<key>EthernetBuiltIn</key>
 	<string>Yes</string>
 	<key>Graphics Mode</key>
-	<string>1366x768x32</string>
-	<key>GraphicsEnabler</key>
-	<string>No</string>
+	<string>1366x768x32@59.989</string>
 	<key>Kernel</key>
 	<string>mach_kernel</string>
 	<key>Kernel Flags</key>
@@ -20,15 +24,9 @@
 	<string>1</string>
 	<key>SMBIOS</key>
 	<string>/Extra/smbios.plist</string>
-	<key>Theme</key>
-	<string>LoginToLion</string>
 	<key>Timeout</key>
 	<string>2</string>
 	<key>UseKernelCache</key>
 	<string>Yes</string>
-	<key>GenerateCStates</key>
-	<string>Yes</string>
-	<key>GeneratePStates</key>
-	<string>Yes</string>	
 </dict>
 </plist>

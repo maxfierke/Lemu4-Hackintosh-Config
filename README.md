@@ -1,7 +1,7 @@
 Lemu4-Hackintosh-Config
 =======================
 
-DSDT and boot config needed for running OS X 10.8 on a System76 Lemur Ultra 4
+DSDT, SSDT, and boot config needed for running OS X 10.8 on a System76 Lemur Ultra 4
 
 **NOTE: Only applies to Lemu4's configured with the i7-3610QM**
 
@@ -12,7 +12,6 @@ DSDT and boot config needed for running OS X 10.8 on a System76 Lemur Ultra 4
 - Applied HD4000 fix (using HD4000 platform Id 3)
 
 ###Kext's Needed:
-- NullCPUPowerManagement (Not need if you apply Conti's hack, see below)
 - ElliotForceLegacyRTC (May not be needed, since I applied an RTC fix to the DSDT)
 - FakeSMC
 - 3rd_Party_SATA (Not sure if needed, but doesn't hurt)
@@ -21,13 +20,12 @@ DSDT and boot config needed for running OS X 10.8 on a System76 Lemur Ultra 4
 - VoodooBattery for Mountlion (For AC & battery status)
 - Lnx2Mac RTL81xx Ethernet kext
 
-Note: You may also do Conti's hack for fixing AppleIntelCPUPowerManagement so that NullCPUPowerManagement isn't required:
-
+###Patch for AppleIntelCPUPowerManagement (Conti's fix)
 - `sudo cp -R /System/Library/Extensions/AppleIntelCPUPowerManagement.kext /System/Library/Extensions/AppleIntelCPUPowerManagement.kext.backup`
 - `sudo perl -pi -e 's|\xE2\x00\x00\x00\x0F\x30|\xE2\x00\x00\x00\x90\x 90|g' /System/Library/Extensions/AppleIntelCPUPowerManagement.kext/Contents/MacOS/AppleIntelCPUPowerManagement`
 
 ###SMBios:
-- Set to MacBookPro9,2
+- Set to MacBookPro9,2 with Chameleon Wizard
 
 ###Working Hardware:
 - Accelerated Graphics
@@ -47,8 +45,7 @@ Note: You may also do Conti's hack for fixing AppleIntelCPUPowerManagement so th
 - Optical drives (I have a second HDD bay)
 
 ###Notes
-- Sometimes it's a bit laggy to ramp up the CPU (Needs a working SSDT and description of power states and steppings it supports. Working on it)
-- Battery life is about half of what it is on Ubuntu 12.10 (2.25 hours vs. ~4 hours). Likely due to the above note.
+- Battery life is about half of what it is on Ubuntu 12.10 (2.25 hours vs. ~4 hours).
 
 ###OBVIOUS DISCLAIMER:
 You do all of this at your own risk. I'm not responsible for any damage, intentional or unintentional, including, but not limited to, data loss, loss of functionality, hardware or software damage, or unfulfilled partners.
