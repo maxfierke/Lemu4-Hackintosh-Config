@@ -17,10 +17,11 @@ DSDT, SSDT, and boot config needed for running OS X 10.8 on a System76 Lemur Ult
 - 3rd_Party_SATA (Not sure if needed, but doesn't hurt)
 - RehabMan's GenericUSBXHCI.kext (USB 3.0) - Universal
 - RehabMan's VoodooPS2Controller.kext (For keyboard, trackpad, and limited gestures)
-- VoodooBattery for Mountlion (For AC & battery status)
+- VoodooBattery for Mountain Lion (For AC & battery status)
 - Lnx2Mac RTL81xx Ethernet kext
+- VoodooHDA 2.7.3 (Make sure to go to System Preferences->VoodooHDA->Device (2)-->Turn monitor down all the way)
 
-###Patch for AppleIntelCPUPowerManagement (Conti's fix)
+###Patch for AppleIntelCPUPowerManagement (AICPM) (Conti's fix)
 - `sudo cp -R /System/Library/Extensions/AppleIntelCPUPowerManagement.kext /System/Library/Extensions/AppleIntelCPUPowerManagement.kext.backup`
 - `sudo perl -pi -e 's|\xE2\x00\x00\x00\x0F\x30|\xE2\x00\x00\x00\x90\x 90|g' /System/Library/Extensions/AppleIntelCPUPowerManagement.kext/Contents/MacOS/AppleIntelCPUPowerManagement`
 
@@ -36,8 +37,7 @@ DSDT, SSDT, and boot config needed for running OS X 10.8 on a System76 Lemur Ult
 - Trackpad (with gestures)
 - Battery and AC
 
-###Not Working:
-- Sound (uses a VIA codec for Intel HDA. Detected as Intel HDA, but does not function. Needs a patched AppleHDA. Working on it)
+###Not Working Hardware:
 - WiFi (use a different card, no drivers for Intel Centrino Advanced-N 6235. Just ordered myself an Atheros 9285)
 - Chicony Webcam (detected, but hasn't been working in flash, photobooth, etc.)
 
@@ -46,9 +46,11 @@ DSDT, SSDT, and boot config needed for running OS X 10.8 on a System76 Lemur Ult
 
 ###Notes
 - Battery life is about half of what it is on Ubuntu 12.10 (2.25 hours vs. ~4 hours).
+- VoodooHDA isn't perfect. I'm working on patching AppleHDA for VT1802.
 
 #How To Use
 - Install the above kexts. Most are available from MultiBeast. VoodooPS2Controller and VoodooBattery are not included in Multibeast.
+- Remove AppleHDA.kext from /System/Library/Extensions/
 - Copy org.chameleon.Boot.plist to /Extra
 - Compile DSDT.dsl to DSDT.aml with MaciASL or another utility. Save compiled DSDT.aml to /Extra
 - Compile SSDT.dsl to SSDT.aml with MaciASL or another utility. Save compiled SSDT.aml to /Extra
