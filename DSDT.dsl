@@ -2,21 +2,21 @@
  * Intel ACPI Component Architecture
  * AML Disassembler version 20100331
  *
- * Disassembly of iASLmLboze.aml, Thu Apr 25 14:03:29 2013
+ * Disassembly of iASLINzWar.aml, Sat Apr 27 21:54:22 2013
  *
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x000098FC (39164)
+ *     Length           0x00009930 (39216)
  *     Revision         0x02
- *     Checksum         0x38
+ *     Checksum         0xEF
  *     OEM ID           "Intel"
  *     OEM Table ID     "CHIEF"
  *     OEM Revision     0x00000001 (1)
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20100331 (537920305)
  */
-DefinitionBlock ("iASLmLboze.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
+DefinitionBlock ("iASLINzWar.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
 {
     External (TNOT, MethodObj)    // 0 Arguments
     External (PDC7)
@@ -4558,16 +4558,37 @@ DefinitionBlock ("iASLmLboze.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
 
             Method (_DSM, 4, NotSerialized)
             {
-                Store (Package (0x04)
+                Store (Package (0x0A)
                     {
+                        "built-in", 
+                        Buffer (One)
+                        {
+                            0x00
+                        },
+                        "device-type",
+                        Buffer(0x0F)
+                        {
+                            "VIA VT1802"
+                        },
+                        "hda-gfx",
+                        Buffer(0x0A)
+                        {
+                            "onboard-1"
+                        },
                         "layout-id", 
                         Buffer (0x04)
                         {
                             0x0C, 0x00, 0x00, 0x00
-                        }, 
-
+                        },
                         "PinConfigurations", 
-                        Buffer (Zero) {}
+                        Buffer (0x2C)
+                        {
+                            /* 0000 */    0x10, 0x01, 0x17, 0x90, 0x10, 0x40, 0x21, 0x02, 
+                            /* 0008 */    0xF0, 0x40, 0x21, 0x42, 0x30, 0x01, 0xA7, 0x90, 
+                            /* 0010 */    0xF0, 0x30, 0x81, 0x41, 0x30, 0x90, 0xA1, 0x01, 
+                            /* 0018 */    0xF0, 0x10, 0x44, 0x47, 0xF0, 0x00, 0xA6, 0x50, 
+                            /* 0020 */    0xF0, 0x01, 0x17, 0x50
+                        }
                     }, Local0)
                 DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
                 Return (Local0)
