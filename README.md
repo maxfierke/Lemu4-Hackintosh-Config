@@ -19,7 +19,6 @@ DSDT, SSDT, and boot config needed for running OS X 10.8 on a System76 Lemur Ult
 - RehabMan's VoodooPS2Controller.kext (For keyboard, trackpad, and limited gestures)
 - VoodooBattery for Mountain Lion (For AC & battery status)
 - Lnx2Mac RTL81xx Ethernet kext
-- VoodooHDA 2.7.3 (Make sure to go to System Preferences->VoodooHDA->Device (2)-->Turn monitor down all the way)
 
 ###Patch for AppleIntelCPUPowerManagement (AICPM) (Conti's fix)
 - `sudo cp -R /System/Library/Extensions/AppleIntelCPUPowerManagement.kext /System/Library/Extensions/AppleIntelCPUPowerManagement.kext.backup`
@@ -36,6 +35,8 @@ DSDT, SSDT, and boot config needed for running OS X 10.8 on a System76 Lemur Ult
 - Keyboard (with function keys)
 - Trackpad (with gestures)
 - Battery and AC
+- Wifi w/ Atheros 9285 card
+- Sound, if you use VoodooHDA (not recommended)
 
 ###Not Working Hardware:
 - WiFi (use a different card, no drivers for Intel Centrino Advanced-N 6235. Just ordered myself an Atheros 9285)
