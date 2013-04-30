@@ -1,0 +1,48 @@
+into device name_adr 0x001C0002 insert
+begin
+Device (ARPT)\n
+{\n
+Name (_ADR, Zero)\n
+Name (_SUN, One)\n
+Name (_PRW, Package (0x02)\n
+{\n
+     0x09, \n
+     0x04 \n
+})\n
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    Store (Package (0x0C)\n
+        {\n
+            "AAPL,slot-name", \n
+            Buffer (0x08)\n
+            {\n
+                "AirPort"\n
+            }, \n
+            "device-id", \n
+            Unicode ("0"), \n
+            "device_type", \n
+            Buffer (0x08)\n
+            {\n
+                "AirPort"\n
+            }, \n
+            "model", \n
+            Buffer (0x37)\n
+            {\n
+                "Atheros AR928x 802.11 a/b/g/n Wireless Network Adapter"\n
+            }, \n
+            "subsystem-id", \n
+            Buffer (0x04)\n
+            {\n
+                0x8F, 0x00, 0x00, 0x00\n
+            }, \n
+            "subsystem-vendor-id", \n
+            Buffer (0x04)\n
+            {\n
+                0x6B, 0x10, 0x00, 0x00\n
+            }\n
+        }, Local0)\n
+    DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+    Return (Local0)\n
+}\n
+}\n
+end

@@ -2,21 +2,21 @@
  * Intel ACPI Component Architecture
  * AML Disassembler version 20100331
  *
- * Disassembly of iASLTluB5b.aml, Sat Apr 27 23:59:28 2013
+ * Disassembly of iASLLCfE3T.aml, Mon Apr 29 20:51:49 2013
  *
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x00009963 (39267)
+ *     Length           0x00009A5D (39517)
  *     Revision         0x02
- *     Checksum         0x75
+ *     Checksum         0xDB
  *     OEM ID           "Intel"
  *     OEM Table ID     "CHIEF"
  *     OEM Revision     0x00000001 (1)
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20100331 (537920305)
  */
-DefinitionBlock ("iASLTluB5b.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
+DefinitionBlock ("iASLLCfE3T.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
 {
     External (TNOT, MethodObj)    // 0 Arguments
     External (PDC7)
@@ -3174,6 +3174,55 @@ DefinitionBlock ("iASLTluB5b.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
             Device (RP03)
             {
                 Name (_ADR, 0x001C0002)
+                Device (ARPT)
+                {
+                    Name (_ADR, Zero)
+                    Name (_SUN, One)
+                    Name (_PRW, Package (0x02)
+                    {
+                        0x09, 
+                        0x04
+                    })
+                    Method (_DSM, 4, NotSerialized)
+                    {
+                        Store (Package (0x0C)
+                            {
+                                "AAPL,slot-name", 
+                                Buffer (0x08)
+                                {
+                                    "AirPort"
+                                }, 
+
+                                "device-id", 
+                                Unicode ("0"), 
+                                "device_type", 
+                                Buffer (0x08)
+                                {
+                                    "AirPort"
+                                }, 
+
+                                "model", 
+                                Buffer (0x37)
+                                {
+                                    "Atheros AR928x 802.11 a/b/g/n Wireless Network Adapter"
+                                }, 
+
+                                "subsystem-id", 
+                                Buffer (0x04)
+                                {
+                                    0x8F, 0x00, 0x00, 0x00
+                                }, 
+
+                                "subsystem-vendor-id", 
+                                Buffer (0x04)
+                                {
+                                    0x6B, 0x10, 0x00, 0x00
+                                }
+                            }, Local0)
+                        DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
+                        Return (Local0)
+                    }
+                }
                 Name (_HPP, Package (0x04)
                 {
                     0x08, 
@@ -3262,6 +3311,7 @@ DefinitionBlock ("iASLTluB5b.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
 
                     Return (PR06 ())
                 }
+
             }
 
             Device (RP04)
@@ -4553,7 +4603,11 @@ DefinitionBlock ("iASLTluB5b.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
 
             Method (_PRW, 0, NotSerialized)
             {
-                Return (GPRW (0x0D, 0x04))
+                Return (Package (0x02)
+                {
+                    0x0D, 
+                    0x04
+                })
             }
 
             Method (_DSM, 4, NotSerialized)
@@ -4585,7 +4639,7 @@ DefinitionBlock ("iASLTluB5b.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                         }, 
 
                         "PinConfigurations", 
-                        Buffer (0x30)
+                        Buffer (0x28)
                         {
                             /* 0000 */    0x10, 0x01, 0x17, 0x90, 0x10, 0x40, 0x21, 0x02, 
                             /* 0008 */    0xF0, 0x40, 0x21, 0x42, 0x30, 0x01, 0xA7, 0x90, 
