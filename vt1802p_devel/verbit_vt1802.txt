@@ -1,0 +1,32 @@
+
+Verbs from Linux Codec Dump File: /Users/mfierke/Desktop/codecgraph/vt1802.txt
+
+Codec: VIA VT1802   Address: 0   DevID: 285639750 (0x11068446)
+
+   Jack   Color  Description                  Node     PinDefault             Original Verbs
+--------------------------------------------------------------------------------------------------------
+ Speaker at Int N/A    0x24 0x24                        2417426704  02471c10 02471d01 02471e17 02471f90  
+ HP Out at Ext Front    0x25 0x25                        35733535   02571c1f 02571d40 02571e21 02571f02  
+    1/8   Green  HP Out at Ext Front         40 0x28   0x422140f0   02871cf0 02871d40 02871e21 02871f42
+ Analog Unknown  Mic at Int N/A              41 0x29   0x90a70137   02971c37 02971d01 02971ea7 02971f90
+    1/8    Blue  Line In at Ext Rear         42 0x2a   0x418130f8   02a71cf8 02a71d30 02a71e81 02a71f41
+    1/8    Pink  Mic at Ext Rear             43 0x2b   0x01a1903e   02b71c3e 02b71d90 02b71ea1 02b71f01
+    RCA   Black  SPDIF Out at Ext Rear Panel 45 0x2d   0x474410f0   02d71cf0 02d71d10 02d71e44 02d71f47
+Digital Unknown  Mic at Int N/A              48 0x30   0x50a600f0   03071cf0 03071d00 03071ea6 03071f50
+ Analog Unknown  Speaker at Int N/A          51 0x33   0x501701f0   03371cf0 03371d01 03371e17 03371f50
+--------------------------------------------------------------------------------------------------------
+
+
+   Jack   Color  Description                  Node     PinDefault             Modified Verbs
+--------------------------------------------------------------------------------------------------------
+ Speaker at Int N/A    0x24 0x24                        2417426704  02471c10 02471d00 02471e17 02471f90  
+ HP Out at Ext Front    0x25 0x25                        35733535   02571c20 02571d40 02571e21 02571f01  
+    1/8   Green  HP Out at Ext Front         40 0x28   0x422140f0   02871cf0 02871d40 02871e21 02871f41
+ Analog Unknown  Mic at Int N/A              41 0x29   0x90a70137   02971c30 02971d00 02971ea7 02971f90
+    1/8    Blue  Line In at Ext Rear         42 0x2a   0x418130f8   02a71c40 02a71d30 02a71e81 02a71f41
+    1/8    Pink  Mic at Ext Rear             43 0x2b   0x01a1903e   02b71c50 02b71d90 02b71ea1 02b71f01
+    RCA   Black  SPDIF Out at Ext Rear Panel 45 0x2d   0x474410f0   02d71c60 02d71d10 02d71e44 02d71f40
+Digital Unknown  Mic at Int N/A              48 0x30   0x50a600f0   03071c70 03071d00 03071ea6 03071f50
+ Analog Unknown  Speaker at Int N/A          51 0x33   0x501701f0   03371c80 03371d00 03371e17 03371f50
+--------------------------------------------------------------------------------------------------------
+
