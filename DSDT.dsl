@@ -2,21 +2,21 @@
  * Intel ACPI Component Architecture
  * AML Disassembler version 20100331
  *
- * Disassembly of iASLLCfE3T.aml, Mon Apr 29 20:51:49 2013
+ * Disassembly of iASLodYK94.aml, Mon Feb 17 00:04:21 2014
  *
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x00009A5D (39517)
+ *     Length           0x00009A6C (39532)
  *     Revision         0x02
- *     Checksum         0xDB
+ *     Checksum         0xC1
  *     OEM ID           "Intel"
  *     OEM Table ID     "CHIEF"
  *     OEM Revision     0x00000001 (1)
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20100331 (537920305)
  */
-DefinitionBlock ("iASLLCfE3T.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
+DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
 {
     External (TNOT, MethodObj)    // 0 Arguments
     External (PDC7)
@@ -2292,47 +2292,9 @@ DefinitionBlock ("iASLLCfE3T.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                             0x00000400,         // Address Length
                             )
                     })
-                    Method (_STA, 0, NotSerialized)
+                    Name (_STA, 0x0F)
+                    Method (_CRS, 0, NotSerialized)
                     {
-                        If (LGreaterEqual (OSYS, 0x07D1))
-                        {
-                            If (HPAE)
-                            {
-                                Return (0x0F)
-                            }
-                        }
-                        Else
-                        {
-                            If (HPAE)
-                            {
-                                Return (0x0B)
-                            }
-                        }
-
-                        Return (Zero)
-                    }
-
-                    Method (_CRS, 0, Serialized)
-                    {
-                        If (HPAE)
-                        {
-                            CreateDWordField (BUF0, 0x10, HPT0)
-                            If (LEqual (HPAS, One))
-                            {
-                                Store (0xFED01000, HPT0)
-                            }
-
-                            If (LEqual (HPAS, 0x02))
-                            {
-                                Store (0xFED02000, HPT0)
-                            }
-
-                            If (LEqual (HPAS, 0x03))
-                            {
-                                Store (0xFED03000, HPT0)
-                            }
-                        }
-
                         Return (BUF0)
                     }
                 }
@@ -3223,6 +3185,7 @@ DefinitionBlock ("iASLLCfE3T.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                         Return (Local0)
                     }
                 }
+
                 Name (_HPP, Package (0x04)
                 {
                     0x08, 
@@ -3311,7 +3274,6 @@ DefinitionBlock ("iASLLCfE3T.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
 
                     Return (PR06 ())
                 }
-
             }
 
             Device (RP04)
@@ -4606,14 +4568,20 @@ DefinitionBlock ("iASLLCfE3T.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                 Return (Package (0x02)
                 {
                     0x0D, 
-                    0x04
+                    0x05
                 })
             }
 
             Method (_DSM, 4, NotSerialized)
             {
-                Store (Package (0x0A)
+                Store (Package (0x16)
                     {
+                        "AAPL,slot-name", 
+                        Buffer (0x09)
+                        {
+                            "Built In"
+                        }, 
+
                         "built-in", 
                         Buffer (One)
                         {
@@ -4624,6 +4592,18 @@ DefinitionBlock ("iASLLCfE3T.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                         Buffer (0x0F)
                         {
                             "VIA VT1802"
+                        }, 
+
+                        "name", 
+                        Buffer (0x0F)
+                        {
+                            "VIA VT1802"
+                        }, 
+
+                        "model", 
+                        Buffer (0x21)
+                        {
+                            "VIA VT1802 High Definition Audio"
                         }, 
 
                         "hda-gfx", 
@@ -4638,15 +4618,26 @@ DefinitionBlock ("iASLLCfE3T.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                             0x0C, 0x00, 0x00, 0x00
                         }, 
 
-                        "PinConfigurations", 
-                        Buffer (0x28)
+                        "device-id", 
+                        Buffer (0x04)
                         {
-                            /* 0000 */    0x10, 0x01, 0x17, 0x90, 0x10, 0x40, 0x21, 0x02, 
-                            /* 0008 */    0xF0, 0x40, 0x21, 0x42, 0x30, 0x01, 0xA7, 0x90, 
-                            /* 0010 */    0xF0, 0x30, 0x81, 0x41, 0x30, 0x90, 0xA1, 0x01, 
-                            /* 0018 */    0xF0, 0x10, 0x44, 0x47, 0xF0, 0x00, 0xA6, 0x50, 
-                            /* 0020 */    0xF0, 0x01, 0x17, 0x50, 0x00, 0x00, 0x00, 0x00
-                        }
+                            0x46, 0x84, 0x00, 0x00
+                        }, 
+
+                        "subsystem-id", 
+                        Buffer (0x04)
+                        {
+                            0x40, 0x02, 0x00, 0x00
+                        }, 
+
+                        "subsystem-vendor-id", 
+                        Buffer (0x04)
+                        {
+                            0x58, 0x15, 0x00, 0x00
+                        }, 
+
+                        "PinConfigurations", 
+                        Buffer (Zero) {}
                     }, Local0)
                 DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
                 Return (Local0)
