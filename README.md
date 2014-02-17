@@ -1,9 +1,9 @@
 Lemu4-Hackintosh-Config
 =======================
 
-DSDT, SSDT, and boot config needed for running OS X 10.8.3 on a System76 Lemur Ultra 4
+DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur Ultra 4
 
-**NOTE: Only applies to Lemu4's configured with the i7-3610QM**
+**NOTE: Only applies to Lemu4's configured with the i7-3610QM**. If you use another processor, DO NOT use my SSDT. Use SSDTGen to generate working SSDT tables for your CPU.
 
 ###Technical Details of the DSDT:
 
@@ -14,21 +14,16 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.3 on a System76 Lemur U
 ###Kext's Needed:
 - ElliotForceLegacyRTC (May not be needed, since I applied an RTC fix to the DSDT)
 - FakeSMC
-- 3rd_Party_SATA (Not sure if needed, but doesn't hurt)
-- RehabMan's GenericUSBXHCI.kext (USB 3.0) - Universal
-- RehabMan's VoodooPS2Controller.kext (For keyboard, trackpad, and limited gestures)
-- VoodooBattery for Mountain Lion (For AC & battery status)
-- Lnx2Mac RTL81xx Ethernet kext
-- AppleHDA for VT2021 kext (we will patch it)
-
-###Patch for AppleIntelCPUPowerManagement (AICPM) (Conti's fix)
-- `sudo cp -R /System/Library/Extensions/AppleIntelCPUPowerManagement.kext /System/Library/Extensions/AppleIntelCPUPowerManagement.kext.backup`
-- `sudo perl -pi -e 's|\xE2\x00\x00\x00\x0F\x30|\xE2\x00\x00\x00\x90\x 90|g' /System/Library/Extensions/AppleIntelCPUPowerManagement.kext/Contents/MacOS/AppleIntelCPUPowerManagement`
+- GenericUSBXHCI.kext (USB 3.0) - Universal from Multibeast
+- Patched AppleIntelCPUPowerManagement from Multibeast
+- [RehabMan's VoodooPS2Controller.kext](https://github.com/RehabMan/OS-X-Voodoo-PS2-Controller) (For keyboard, trackpad, and limited gestures)
+- [RehabMan's Realtek RTL81xx kext](https://github.com/RehabMan/OS-X-Realtek-Network)
+- RehabMan's Battery kexts
 
 ###Patching AppleHDA
-- Use Platforms.xml and layout12.xml from vt1802p_devel/AppleHDA_patch_files
-
-I'm working on a patch utility.
+- Bin Patch: `sudo perl -pi -e 's|\x84\x19\xd4\x11|\x46\x84\x06\x11|g' AppleHDA.kext/Contents/AppleHDA`
+- Replace `AppleHDA.kext/Plugins/AppleHDAHardwareConfigDriver.kext/Info.plist` with `vt1802p_devel/AppleHDA_patch_files/10.8.5/AppleHDAHardwareConfigDriver/Info.plist`
+- zlib compress and replace the `layout12.xml.zlib` and `Platforms.xml.zlib` in `AppleHDA.kext/Resources` with the `layout12.xml` and `Platforms.xml` from `vt1802p_devel/AppleHDA_patch_files/10.8.5/Resources`
 
 ###SMBios:
 - Set to MacBookPro9,2 with Chameleon Wizard
@@ -40,13 +35,15 @@ I'm working on a patch utility.
 - SATA
 - Keyboard (with function keys)
 - Trackpad (with gestures)
-- Battery and AC
-- Wifi w/ Atheros 9285 card
+- Battery and AC (kinda. No longer getting percentage as of 10.8.5)
+- Wifi w/ Atheros 9285 card. DSDT is patched to support the 9285. See [toleda's work](https://github.com/toleda/airport_pcie-hm) for enablement instructions.
 - Audio output (internal speaker & headphone)
+  - With automatic switching between the two (Thanks Liliniser)
+  - The quality is not great. Bass is a bit too much for the speakers. Probably issues with the amp settings for some of the nodes.
 
-###Not Working Hardware:
-- WiFi (use a different card, no drivers for Intel Centrino Advanced-N 6235. Just ordered myself an Atheros 9285)
-- Chicony Webcam (detected, but hasn't been working in flash, photobooth, etc.)
+###Non-working Hardware:
+- Intel Centrino Advanced-N 6235 (No drivers for it. Probably won't be (at least not for 10.8.x))
+- Chicony Webcam (detected, but hasn't been working in flash, photobooth, etc.).
 - Audio Input (Microphone)
 
 ###Haven't Tested
@@ -56,15 +53,13 @@ I'm working on a patch utility.
 - Audio input (Line-In)
 
 ###Notes
-- Battery life is about half of what it is on Ubuntu 12.10 (2.25 hours vs. ~4 hours).
+- Battery life is a bit worse than Ubuntu 12.04, but not by much.
 
 #How To Use
 - Install the above kexts. Most are available from MultiBeast. VoodooPS2Controller and VoodooBattery are not included in Multibeast.
-- Remove AppleHDA.kext from /System/Library/Extensions/
 - Copy org.chameleon.Boot.plist to /Extra
 - Compile DSDT.dsl to DSDT.aml with MaciASL or another utility. Save compiled DSDT.aml to /Extra
 - Compile SSDT.dsl to SSDT.aml with MaciASL or another utility. Save compiled SSDT.aml to /Extra
-- Apply Conti's AICPM fix from above.
 - Add MacBookPro9,2 to /System/Library/CoreServices/PlatformSupport.plist, if missing.
 
 ###OBVIOUS DISCLAIMER:
