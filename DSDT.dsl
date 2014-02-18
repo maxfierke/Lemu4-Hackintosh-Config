@@ -2,21 +2,21 @@
  * Intel ACPI Component Architecture
  * AML Disassembler version 20100331
  *
- * Disassembly of iASLodYK94.aml, Mon Feb 17 00:04:21 2014
+ * Disassembly of iASL7pPdXE.aml, Tue Feb 18 00:59:51 2014
  *
  *
  * Original Table Header:
  *     Signature        "DSDT"
- *     Length           0x00009A6C (39532)
+ *     Length           0x00009F96 (40854)
  *     Revision         0x02
- *     Checksum         0xC1
+ *     Checksum         0x8C
  *     OEM ID           "Intel"
  *     OEM Table ID     "CHIEF"
  *     OEM Revision     0x00000001 (1)
  *     Compiler ID      "INTL"
  *     Compiler Version 0x20100331 (537920305)
  */
-DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
+DefinitionBlock ("iASL7pPdXE.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
 {
     External (TNOT, MethodObj)    // 0 Arguments
     External (PDC7)
@@ -7806,7 +7806,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                 {
                     If (^^PCI0.LPCB.EC.ECOK)
                     {
-                        If (And (^^PCI0.LPCB.EC.OEM3, 0x2000))
+                        If (And (B1B2 (^^PCI0.LPCB.EC.EM31, ^^PCI0.LPCB.EC.EM32), 0x2000))
                         {
                             If (LLess (Local7, 0x02))
                             {
@@ -8045,16 +8045,16 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
             {
                 If (^^PCI0.LPCB.EC.BAT0)
                 {
-                    And (^^PCI0.LPCB.EC.BDC0, 0xFFFF, Local0)
+                    And (B1B4 (^^PCI0.LPCB.EC.DC01, ^^PCI0.LPCB.EC.DC02, ^^PCI0.LPCB.EC.DC03, ^^PCI0.LPCB.EC.DC04), 0xFFFF, Local0)
                     Store (Local0, Index (PBIF, One))
-                    And (^^PCI0.LPCB.EC.BFC0, 0xFFFF, Local0)
+                    And (B1B4 (^^PCI0.LPCB.EC.FC01, ^^PCI0.LPCB.EC.FC02, ^^PCI0.LPCB.EC.FC03, ^^PCI0.LPCB.EC.FC04), 0xFFFF, Local0)
                     Store (Local0, Index (PBIF, 0x02))
                     Store (Local0, BFCC)
-                    And (^^PCI0.LPCB.EC.BDV0, 0xFFFF, Local0)
+                    And (B1B4 (^^PCI0.LPCB.EC.DV01, ^^PCI0.LPCB.EC.DV02, ^^PCI0.LPCB.EC.DV03, ^^PCI0.LPCB.EC.DV04), 0xFFFF, Local0)
                     Store (Local0, Index (PBIF, 0x04))
-                    And (^^PCI0.LPCB.EC.BCW0, 0xFFFF, Local0)
+                    And (B1B4 (^^PCI0.LPCB.EC.CW01, ^^PCI0.LPCB.EC.CW02, ^^PCI0.LPCB.EC.CW03, ^^PCI0.LPCB.EC.CW04), 0xFFFF, Local0)
                     Store (Local0, Index (PBIF, 0x05))
-                    And (^^PCI0.LPCB.EC.BCL0, 0xFFFF, Local0)
+                    And (B1B4 (^^PCI0.LPCB.EC.CL01, ^^PCI0.LPCB.EC.CL02, ^^PCI0.LPCB.EC.CL03, ^^PCI0.LPCB.EC.CL04), 0xFFFF, Local0)
                     Store (Local0, Index (PBIF, 0x06))
                     Store ("BAT", Index (PBIF, 0x09))
                     Store ("0001", Index (PBIF, 0x0A))
@@ -8104,16 +8104,17 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                     Store (Zero, Local1)
                     If (^^AC.ACFG)
                     {
-                        If (LEqual (And (^^PCI0.LPCB.EC.BST0, 0x02), 0x02))
+                        If (LEqual (And (B1B4 (^^PCI0.LPCB.EC.ST01, ^^PCI0.LPCB.EC.ST02, ^^PCI0.LPCB.EC.ST03, ^^PCI0.LPCB.EC.ST04), 0x02), 
+                            0x02))
                         {
                             Or (Local0, 0x02, Local0)
-                            And (^^PCI0.LPCB.EC.BPR0, 0xFFFF, Local1)
+                            And (B1B4 (^^PCI0.LPCB.EC.PR01, ^^PCI0.LPCB.EC.PR02, ^^PCI0.LPCB.EC.PR03, ^^PCI0.LPCB.EC.PR04), 0xFFFF, Local1)
                         }
                     }
                     Else
                     {
                         Or (Local0, One, Local0)
-                        And (^^PCI0.LPCB.EC.BPR0, 0xFFFF, Local1)
+                        And (B1B4 (^^PCI0.LPCB.EC.PR01, ^^PCI0.LPCB.EC.PR02, ^^PCI0.LPCB.EC.PR03, ^^PCI0.LPCB.EC.PR04), 0xFFFF, Local1)
                     }
 
                     And (Local1, 0x8000, Local7)
@@ -8122,13 +8123,13 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                         Store (0xFFFFFFFF, Local1)
                     }
 
-                    And (^^PCI0.LPCB.EC.BRC0, 0xFFFF, Local2)
-                    And (^^PCI0.LPCB.EC.BPV0, 0xFFFF, Local3)
+                    And (B1B4 (^^PCI0.LPCB.EC.RC01, ^^PCI0.LPCB.EC.RC02, ^^PCI0.LPCB.EC.RC03, ^^PCI0.LPCB.EC.RC04), 0xFFFF, Local2)
+                    And (B1B4 (^^PCI0.LPCB.EC.PV01, ^^PCI0.LPCB.EC.PV02, ^^PCI0.LPCB.EC.PV03, ^^PCI0.LPCB.EC.PV04), 0xFFFF, Local3)
                     Store (Local0, Index (PBST, Zero))
                     Store (Local1, Index (PBST, One))
                     Store (Local2, Index (PBST, 0x02))
                     Store (Local3, Index (PBST, 0x03))
-                    If (LNotEqual (BFCC, ^^PCI0.LPCB.EC.BFC0))
+                    If (LNotEqual (BFCC, B1B4 (^^PCI0.LPCB.EC.FC01, ^^PCI0.LPCB.EC.FC02, ^^PCI0.LPCB.EC.FC03, ^^PCI0.LPCB.EC.FC04)))
                     {
                         Notify (BAT0, 0x81)
                     }
@@ -8207,7 +8208,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                             If (One)
                             {
                                 Store (^^PCI0.LPCB.EC.FDAT, Local1)
-                                If (And (^^PCI0.LPCB.EC.OEM3, 0x08))
+                                If (And (B1B2 (^^PCI0.LPCB.EC.EM31, ^^PCI0.LPCB.EC.EM32), 0x08))
                                 {
                                     If (And (Local1, 0x02))
                                     {
@@ -8223,7 +8224,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                                     Store (0x02, Local0)
                                 }
 
-                                If (And (^^PCI0.LPCB.EC.OEM3, 0x1000)) {}
+                                If (And (B1B2 (^^PCI0.LPCB.EC.EM31, ^^PCI0.LPCB.EC.EM32), 0x1000)) {}
                                 Else
                                 {
                                     Or (Local0, 0x04, Local0)
@@ -8248,7 +8249,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                                 If (One)
                                 {
                                     Store (^^PCI0.LPCB.EC.FDAT, Local1)
-                                    If (And (^^PCI0.LPCB.EC.OEM3, 0x04))
+                                    If (And (B1B2 (^^PCI0.LPCB.EC.EM31, ^^PCI0.LPCB.EC.EM32), 0x04))
                                     {
                                         If (And (Local1, One))
                                         {
@@ -8283,7 +8284,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                                     If (One)
                                     {
                                         Store (^^PCI0.LPCB.EC.FDAT, Local1)
-                                        If (And (^^PCI0.LPCB.EC.OEM3, 0x10))
+                                        If (And (B1B2 (^^PCI0.LPCB.EC.EM31, ^^PCI0.LPCB.EC.EM32), 0x10))
                                         {
                                             If (And (Local1, 0x04))
                                             {
@@ -8346,7 +8347,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                                             If (One)
                                             {
                                                 Store (^^PCI0.LPCB.EC.FDAT, Local1)
-                                                If (And (^^PCI0.LPCB.EC.OEM3, 0x20))
+                                                If (And (B1B2 (^^PCI0.LPCB.EC.EM31, ^^PCI0.LPCB.EC.EM32), 0x20))
                                                 {
                                                     If (And (Local1, 0x08))
                                                     {
@@ -8418,7 +8419,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                                                 {
                                                     If (^^PCI0.LPCB.EC.ECOK)
                                                     {
-                                                        If (And (^^PCI0.LPCB.EC.OEM3, 0x0800))
+                                                        If (And (B1B2 (^^PCI0.LPCB.EC.EM31, ^^PCI0.LPCB.EC.EM32), 0x0800))
                                                         {
                                                             Store (One, Local0)
                                                         }
@@ -8438,7 +8439,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                                                     {
                                                         If (^^PCI0.LPCB.EC.ECOK)
                                                         {
-                                                            Store (^^PCI0.LPCB.EC.BFC0, Local0)
+                                                            Store (B1B4 (^^PCI0.LPCB.EC.FC01, ^^PCI0.LPCB.EC.FC02, ^^PCI0.LPCB.EC.FC03, ^^PCI0.LPCB.EC.FC04), Local0)
                                                         }
                                                         Else
                                                         {
@@ -8451,7 +8452,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                                                         {
                                                             If (^^PCI0.LPCB.EC.ECOK)
                                                             {
-                                                                Store (^^PCI0.LPCB.EC.BDC0, Local0)
+                                                                Store (B1B4 (^^PCI0.LPCB.EC.DC01, ^^PCI0.LPCB.EC.DC02, ^^PCI0.LPCB.EC.DC03, ^^PCI0.LPCB.EC.DC04), Local0)
                                                             }
                                                             Else
                                                             {
@@ -8706,7 +8707,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                                                                                                                                     Store (0xC1, ^^PCI0.LPCB.EC.FDAT)
                                                                                                                                     Store (0xA7, ^^PCI0.LPCB.EC.FBUF)
                                                                                                                                     Store (0xB8, ^^PCI0.LPCB.EC.FCMD)
-                                                                                                                                    If (And (^^PCI0.LPCB.EC.OEM3, 0x8000))
+                                                                                                                                    If (And (B1B2 (^^PCI0.LPCB.EC.EM31, ^^PCI0.LPCB.EC.EM32), 0x8000))
                                                                                                                                     {
                                                                                                                                         Store (One, ^^PCI0.LPCB.EC.SLFG)
                                                                                                                                     }
@@ -8748,7 +8749,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                                                                                                                                     {
                                                                                                                                         If (^^PCI0.LPCB.EC.ECOK)
                                                                                                                                         {
-                                                                                                                                            If (And (^^PCI0.LPCB.EC.OEM3, 0x10))
+                                                                                                                                            If (And (B1B2 (^^PCI0.LPCB.EC.EM31, ^^PCI0.LPCB.EC.EM32), 0x10))
                                                                                                                                             {
                                                                                                                                                 Store (0xC1, ^^PCI0.LPCB.EC.FDAT)
                                                                                                                                                 Store (0xA3, ^^PCI0.LPCB.EC.FBUF)
@@ -8764,7 +8765,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                                                                                                                                         {
                                                                                                                                             If (^^PCI0.LPCB.EC.ECOK)
                                                                                                                                             {
-                                                                                                                                                If (And (^^PCI0.LPCB.EC.OEM3, 0x04))
+                                                                                                                                                If (And (B1B2 (^^PCI0.LPCB.EC.EM31, ^^PCI0.LPCB.EC.EM32), 0x04))
                                                                                                                                                 {
                                                                                                                                                     Store (0xC1, ^^PCI0.LPCB.EC.FDAT)
                                                                                                                                                     Store (0xA1, ^^PCI0.LPCB.EC.FBUF)
@@ -8851,7 +8852,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                                                                                                                                                                             {
                                                                                                                                                                                 If (^^PCI0.LPCB.EC.ECOK)
                                                                                                                                                                                 {
-                                                                                                                                                                                    If (And (^^PCI0.LPCB.EC.OEM3, 0x20))
+                                                                                                                                                                                    If (And (B1B2 (^^PCI0.LPCB.EC.EM31, ^^PCI0.LPCB.EC.EM32), 0x20))
                                                                                                                                                                                     {
                                                                                                                                                                                         Store (0xC1, ^^PCI0.LPCB.EC.FDAT)
                                                                                                                                                                                         Store (0xA4, ^^PCI0.LPCB.EC.FBUF)
@@ -9258,18 +9259,45 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                 PWOF,   1, 
                 WFNO,   8, 
                 BPU0,   32, 
-                BDC0,   32, 
-                BFC0,   32, 
+                DC01,   8, 
+                DC02,   8, 
+                DC03,   8, 
+                DC04,   8, 
+                FC01,   8, 
+                FC02,   8, 
+                FC03,   8, 
+                FC04,   8, 
                 BTC0,   32, 
-                BDV0,   32, 
-                BST0,   32, 
-                BPR0,   32, 
-                BRC0,   32, 
-                BPV0,   32, 
+                DV01,   8, 
+                DV02,   8, 
+                DV03,   8, 
+                DV04,   8, 
+                ST01,   8, 
+                ST02,   8, 
+                ST03,   8, 
+                ST04,   8, 
+                PR01,   8, 
+                PR02,   8, 
+                PR03,   8, 
+                PR04,   8, 
+                RC01,   8, 
+                RC02,   8, 
+                RC03,   8, 
+                RC04,   8, 
+                PV01,   8, 
+                PV02,   8, 
+                PV03,   8, 
+                PV04,   8, 
                 BTP0,   16, 
                 BRS0,   16, 
-                BCW0,   32, 
-                BCL0,   32, 
+                CW01,   8, 
+                CW02,   8, 
+                CW03,   8, 
+                CW04,   8, 
+                CL01,   8, 
+                CL02,   8, 
+                CL03,   8, 
+                CL04,   8, 
                 BCG0,   32, 
                 BG20,   32, 
                 BMO0,   64, 
@@ -9345,7 +9373,8 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                         Offset (0xC8), 
                 OEM1,   8, 
                 OEM2,   8, 
-                OEM3,   16, 
+                EM31,   8, 
+                EM32,   8, 
                 OEM4,   8, 
                         Offset (0xCE), 
                 DUT1,   8, 
@@ -9697,7 +9726,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                 Store (0x35, P80H)
                 If (^^^^WMI.HKDR)
                 {
-                    If (And (OEM3, 0x8000))
+                    If (And (B1B2 (EM31, EM32), 0x8000))
                     {
                         Store (One, SLFG)
                         Store (0xDE, ^^^^WMI.EVNT)
@@ -9721,7 +9750,7 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
             Method (_Q37, 0, NotSerialized)
             {
                 Store (0x37, P80H)
-                If (And (OEM3, 0x2000))
+                If (And (B1B2 (EM31, EM32), 0x2000))
                 {
                     Store (One, B15C)
                 }
@@ -10004,6 +10033,20 @@ DefinitionBlock ("iASLodYK94.aml", "DSDT", 2, "Intel", "CHIEF", 0x00000001)
                 0x00
             }, Arg4)
         Return (Zero)
+    }
+
+    Method (B1B4, 4, NotSerialized)
+    {
+        Store (Arg3, Local0)
+        Or (Arg2, ShiftLeft (Local0, 0x08), Local0)
+        Or (Arg1, ShiftLeft (Local0, 0x08), Local0)
+        Or (Arg0, ShiftLeft (Local0, 0x08), Local0)
+        Return (Local0)
+    }
+
+    Method (B1B2, 2, NotSerialized)
+    {
+        Return (Or (Arg0, ShiftLeft (Arg1, 0x08)))
     }
 }
 
