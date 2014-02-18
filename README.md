@@ -8,7 +8,7 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur U
 ###Technical Details of the DSDT:
 
 - Pulled from ACPI under Ubuntu
-- Applied all Ivy Bridge patches (except HPET, patch doesn't compile)
+- Applied all Ivy Bridge patches
 - Applied HD4000 fix (using HD4000 platform Id 3)
 
 ###Kext's Needed:
@@ -18,7 +18,7 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur U
 - Patched AppleIntelCPUPowerManagement from Multibeast
 - [RehabMan's VoodooPS2Controller.kext](https://github.com/RehabMan/OS-X-Voodoo-PS2-Controller) (For keyboard, trackpad, and limited gestures)
 - [RehabMan's Realtek RTL81xx kext](https://github.com/RehabMan/OS-X-Realtek-Network)
-- RehabMan's Battery kexts
+- [RehabMan's Battery kext](https://github.com/RehabMan/OS-X-ACPI-Battery-Driver)
 
 ###Patching AppleHDA
 - Bin Patch: `sudo perl -pi -e 's|\x84\x19\xd4\x11|\x46\x84\x06\x11|g' AppleHDA.kext/Contents/AppleHDA`
@@ -34,8 +34,8 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur U
 - Ethernet
 - SATA
 - Keyboard (with function keys)
-- Trackpad (with gestures)
-- Battery and AC (kinda. No longer getting percentage as of 10.8.5)
+- Trackpad (with basic Synaptic gestures)
+- Battery and AC
 - Wifi w/ Atheros 9285 card. DSDT is patched to support the 9285. See [toleda's work](https://github.com/toleda/airport_pcie-hm) for enablement instructions.
 - Audio output (internal speaker & headphone)
   - With automatic switching between the two (Thanks Liliniser)
@@ -53,7 +53,7 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur U
 - Audio input (Line-In)
 
 ###Notes
-- Battery life is a bit worse than Ubuntu 12.04, but not by much.
+- Battery life is a bit shit, to be honest. Losses about 1% every 2-3 minutes.
 
 #How To Use
 - Install the above kexts. Most are available from MultiBeast. VoodooPS2Controller and VoodooBattery are not included in Multibeast.
