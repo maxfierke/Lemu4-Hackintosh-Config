@@ -45,6 +45,7 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur U
 ###Non-working Hardware:
 - Intel Centrino Advanced-N 6235 (No drivers for it. Probably won't be (at least not for 10.8.x))
 - Audio Input (Microphone)
+- Brightness changing
 
 ###Haven't Tested
 - Optical drive (I have a second HDD bay)
@@ -52,8 +53,9 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur U
 - VGA
 - Audio input (Line-In)
 
-###Notes
+###Known Issues
 - Battery life is a bit shit, to be honest. Losses about 1% every 2-3 minutes.
+- Occasionally, the Atheros 9285 will not be detected after start-up. Kind of seems like the driver may have crashed. Restarting usually fixes it.
 
 #How To Use
 - Install the above kexts. Most are available from MultiBeast. VoodooPS2Controller and VoodooBattery are not included in Multibeast.
