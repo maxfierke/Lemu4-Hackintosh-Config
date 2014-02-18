@@ -40,10 +40,10 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur U
 - Audio output (internal speaker & headphone)
   - With automatic switching between the two (Thanks Liliniser)
   - The quality is not great. Bass is a bit too much for the speakers. Probably issues with the amp settings for some of the nodes.
+- Chicony Webcam (thanks to [Andy Vandijck's AnyiSightCam kext](http://www.insanelymac.com/forum/topic/238847-get-your-uvc-webcam-working-as-apple-isight/). I've provided a patched version of this in the `kexts` folder. It might even be possible to do via DSDT too)
 
 ###Non-working Hardware:
 - Intel Centrino Advanced-N 6235 (No drivers for it. Probably won't be (at least not for 10.8.x))
-- Chicony Webcam (detected, but hasn't been working in flash, photobooth, etc.).
 - Audio Input (Microphone)
 
 ###Haven't Tested
