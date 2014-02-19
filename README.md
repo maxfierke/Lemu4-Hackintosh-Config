@@ -39,11 +39,10 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur U
 - Wifi w/ Atheros 9285 card. DSDT is patched to support the 9285. See [toleda's work](https://github.com/toleda/airport_pcie-hm) for enablement instructions.
 - Audio output (internal speaker & headphone)
   - With automatic switching between the two (Thanks Liliniser)
-  - The quality is not great. Bass is a bit too much for the speakers. Probably issues with the amp settings for some of the nodes.
 - Chicony Webcam (thanks to [Andy Vandijck's AnyiSightCam kext](http://www.insanelymac.com/forum/topic/238847-get-your-uvc-webcam-working-as-apple-isight/). I've provided a patched version of this in the `kexts` folder. It might even be possible to do via DSDT too)
 
 ###Non-working Hardware:
-- Intel Centrino Advanced-N 6235 (No drivers for it. Probably won't be (at least not for 10.8.x))
+- Intel Centrino Advanced-N 6235 (No drivers for it. Probably never will be. Get an Atheros or Broadcom. Atheros 9285 recommended)
 - Audio Input (Microphone)
 - Brightness changing
 
@@ -55,13 +54,13 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur U
 
 ###Known Issues
 - Battery life is a bit shit, to be honest. Losses about 1% every 2-3 minutes.
-- Occasionally, the Atheros 9285 will not be detected after start-up. Kind of seems like the driver may have crashed. Restarting usually fixes it.
+- Sound quality is not that great. Bass is a bit too much for the speakers. Probably issues with the amp settings for some of the nodes.
 
 #How To Use
-- Install the above kexts. Most are available from MultiBeast. VoodooPS2Controller and VoodooBattery are not included in Multibeast.
+- Install the above kexts. The ones not linked are available in Multibeast.
 - Copy org.chameleon.Boot.plist to /Extra
-- Compile DSDT.dsl to DSDT.aml with MaciASL or another utility. Save compiled DSDT.aml to /Extra
-- Compile SSDT.dsl to SSDT.aml with MaciASL or another utility. Save compiled SSDT.aml to /Extra
+- Compile DSDT.dsl to DSDT.aml with MaciASL. Save compiled DSDT.aml to /Extra
+- Compile SSDT.dsl to SSDT.aml with MaciASL. Save compiled SSDT.aml to /Extra
 - Add MacBookPro9,2 to /System/Library/CoreServices/PlatformSupport.plist, if missing.
 
 ###OBVIOUS DISCLAIMER:
