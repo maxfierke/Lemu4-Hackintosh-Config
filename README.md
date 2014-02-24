@@ -53,8 +53,7 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur U
 - Audio input (Line-In)
 
 ###Known Issues
-- Battery life is a bit shit, to be honest. Losses about 1% every 2-3 minutes.
-- Sound quality is not that great. Bass is a bit too much for the speakers. Probably issues with the amp settings for some of the nodes.
+- Battery life is a bit shit, to be honest. Loses about 1% every 2-3 minutes.
 
 #How To Use
 - Install the above kexts. The ones not linked are available in Multibeast.
