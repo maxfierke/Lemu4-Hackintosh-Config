@@ -3651,6 +3651,18 @@
 							</dict>
 						</array>
 					</array>
+					<array>
+						<array>
+							<dict>
+								<key>NodeID</key>
+								<integer>45</integer>
+							</dict>
+							<dict>
+								<key>NodeID</key>
+								<integer>14</integer>
+							</dict>
+						</array>
+					</array>
 				</array>
 			</array>
 			<key>PathMapID</key>
