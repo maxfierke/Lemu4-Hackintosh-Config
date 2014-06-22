@@ -12,16 +12,22 @@
 	<string>Yes</string>
 	<key>EthernetBuiltIn</key>
 	<string>Yes</string>
+	<key>GraphicsEnabler</key>
+	<string>No</string>
+	<key>HDEFLayoutID</key>
+	<string>03000000</string>
+	<key>IGPEnabler</key>
+	<string>Yes</string>
+	<key>IGPlatformID</key>
+	<string>01660003</string>
 	<key>Graphics Mode</key>
 	<string>1366x768x32@59.989</string>
 	<key>Kernel</key>
 	<string>mach_kernel</string>
 	<key>Kernel Flags</key>
-	<string>npci=0x3000 darkwake=0 PCIRootUID=1</string>
+	<string> PCIRootUID=1</string>
 	<key>Legacy Logo</key>
 	<string>Yes</string>
-	<key>PciRoot</key>
-	<string>1</string>
 	<key>SMBIOS</key>
 	<string>/Extra/smbios.plist</string>
 	<key>Timeout</key>
