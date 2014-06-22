@@ -21,7 +21,7 @@ DSDT, SSDT, and boot config needed for running OS X 10.8.5 on a System76 Lemur U
 - [RehabMan's Battery kext](https://github.com/RehabMan/OS-X-ACPI-Battery-Driver)
 
 ###Patching AppleHDA
-- Bin Patch: `sudo perl -pi -e 's|\x84\x19\xd4\x11|\x46\x84\x06\x11|g' AppleHDA.kext/Contents/AppleHDA`
+- Bin Patch: `sudo perl -pi -e 's|\x84\x19\xd4\x11|\x46\x84\x06\x11|g' AppleHDA.kext/Contents/MacOS/AppleHDA`
 - Replace `AppleHDA.kext/Plugins/AppleHDAHardwareConfigDriver.kext/Info.plist` with `vt1802p_devel/AppleHDA_patch_files/10.8.5/AppleHDAHardwareConfigDriver/Info.plist`
 - zlib compress and replace the `layout12.xml.zlib` and `Platforms.xml.zlib` in `AppleHDA.kext/Resources` with the `layout12.xml` and `Platforms.xml` from `vt1802p_devel/AppleHDA_patch_files/10.8.5/Resources`
 
